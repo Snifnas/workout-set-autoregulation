@@ -51,7 +51,7 @@ function updateWorkload(workloadLevel) {
 function updateSoreness(sorenessLevel) {
   switch (sorenessLevel) {
     case 'neverGotSore':
-      volume += 1;
+      volume += 2;
       break;
     case 'healedAWhileAgo':
       volume += 1;
@@ -75,10 +75,10 @@ function updateProgressedLastTime(progressLevel) {
       volume -= 2;
       break;
     case 'barely':
-      volume -= 1;
+      // No change in volume
       break;
     case 'yes':
-      // No change in volume
+      volume += 1;
       break;
     default:
       console.error("Invalid progress level");
