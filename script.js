@@ -7,11 +7,11 @@ function recommendSets() {
   
   let recommendedSets = lastSets;
 
-  // Recommendation logic
-  if ((pump < 3 || workload < 3) && energy >= 4) {
-    recommendedSets += 1; // Increase by 1 if pump or workload was low and energy is high
-  } else if ((pump >= 4 || workload >= 4) && energy <= 2) {
-    recommendedSets -= 1; // Decrease by 1 if pump or workload was high and energy is low
+  // Increase Sets Aggressively
+  if ((pump <= 2 || workload <= 2) && energy >= 4) {
+    recommendedSets += 2; // Increase sets aggressively if pump/workload is low and energy is high
+  } else if (energy >= 4) {
+    recommendedSets += 1; // Increase sets moderately if energy is high
   }
 
   // Ensure recommended sets is at least 1
