@@ -1,5 +1,12 @@
-// Initial volume
+// Initialize volume
 let volume = 0;
+
+// Function to set initial volume
+function setInitialVolume() {
+  const initialVolumeInput = document.getElementById("initialVolume").value;
+  volume = parseInt(initialVolumeInput) || 0; // Default to 0 if input is empty or invalid
+  updateDisplay();
+}
 
 // Muscle Pump Feedback
 function updatePump(pumpLevel) {
