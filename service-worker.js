@@ -1,5 +1,5 @@
-const cacheName = 'muscle-volume-tracker-v1';
-const assetsToCache = [
+const CACHE_NAME = 'muscle-volume-tracker-cache-v1';
+const urlsToCache = [
   '/',
   '/index.html',
   '/style.css',
@@ -9,30 +9,36 @@ const assetsToCache = [
   '/images/icon-512x512.png'
 ];
 
-// Install event
-self.addEventListener('install', event => {
+// Install event: cache all app shell files
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(cacheName).then(cache => {
-      return cache.addAll(assetsToCache);
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('Opened cache');
+      return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Fetch event
-self.addEventListener('fetch', event => {
+// Fetch event: serve from cache, fall back to network if not cached
+self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then(response => {
+    caches.match(event.request).then((response) => {
       return response || fetch(event.request);
     })
   );
 });
 
-// Activate event - update service worker and clear old cache
-self.addEventListener('activate', event => {
+// Activate event: clean up old caches
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter(name => name !== cacheName).map(name => caches.delete(name))
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
       );
     })
   );
