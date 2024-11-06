@@ -12,13 +12,13 @@ function setInitialVolume() {
 function updatePump(pumpLevel) {
   switch (pumpLevel) {
     case 'low':
-      volume += 1;
+      volume += 2;
       break;
     case 'moderate':
-      // No change in volume
+      volume += 1;
       break;
     case 'amazing':
-      volume -= 1;
+      // No change in volume
       break;
     default:
       console.error("Invalid pump level");
@@ -30,7 +30,7 @@ function updatePump(pumpLevel) {
 function updateWorkload(workloadLevel) {
   switch (workloadLevel) {
     case 'easy':
-      volume += 1;
+      volume += 2;
       break;
     case 'prettyGood':
       volume += 1;
@@ -75,10 +75,10 @@ function updateProgressedLastTime(progressLevel) {
       volume -= 2;
       break;
     case 'barely':
-      // No change in volume
+      volume -= 1;
       break;
     case 'yes':
-      volume += 1;
+      // No change in volume
       break;
     default:
       console.error("Invalid progress level");
