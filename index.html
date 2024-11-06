@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set Recommendation App</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <title>Muscle Volume Tracker</title>
 </head>
 <body>
-  <h1>Workout Set Recommender</h1>
-  <div class="container">
-    <label>Sets Done Last Time:</label>
-    <input type="number" id="lastSets" min="1" value="4">
-    
-    <label>Last Pump Evaluation (0-5):</label>
-    <input type="number" id="pump" min="0" max="5" value="3">
-    
-    <label>Last Workload Evaluation (0-5):</label>
-    <input type="number" id="workload" min="0" max="5" value="3">
-    
-    <label>Energy for Today (0-5):</label>
-    <input type="number" id="energy" min="0" max="5" value="3">
-    
-    <button onclick="recommendSets()">Get Recommendation</button>
-    
-    <h2 id="recommendation">Recommended Sets: </h2>
-  </div>
+  <h1>Muscle Volume Tracker</h1>
+
+  <div id="volumeDisplay">Current Volume: 0</div>
+
+  <h2>Muscle Pump</h2>
+  <button id="lowPump">Low Pump</button>
+  <button id="moderatePump">Moderate Pump</button>
+  <button id="amazingPump">Amazing Pump</button>
+
+  <h2>Muscle Workload</h2>
+  <button id="easyWorkload">Easy</button>
+  <button id="prettyGoodWorkload">Pretty Good</button>
+  <button id="pushedLimitsWorkload">Pushed My Limits</button>
+  <button id="tooMuchWorkload">Too Much</button>
+
+  <h2>Muscle Soreness</h2>
+  <button id="neverSore">Never Got Sore</button>
+  <button id="healedWhileAgo">Healed A While Ago</button>
+  <button id="healedOnTime">Healed Just On Time</button>
+  <button id="stillSore">I'm Still Sore!</button>
+
   <script src="script.js"></script>
 </body>
 </html>
