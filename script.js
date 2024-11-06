@@ -68,6 +68,42 @@ function updateSoreness(sorenessLevel) {
   updateDisplay();
 }
 
+// Progressed Last Time Feedback
+function updateProgressedLastTime(progressLevel) {
+  switch (progressLevel) {
+    case 'no':
+      volume -= 2;
+      break;
+    case 'barely':
+      // No change in volume
+      break;
+    case 'yes':
+      volume += 1;
+      break;
+    default:
+      console.error("Invalid progress level");
+  }
+  updateDisplay();
+}
+
+// Current Energy Feedback
+function updateCurrentEnergy(energyLevel) {
+  switch (energyLevel) {
+    case 'tired':
+      volume -= 1;
+      break;
+    case 'normal':
+      // No change in volume
+      break;
+    case 'energised':
+      volume += 1;
+      break;
+    default:
+      console.error("Invalid energy level");
+  }
+  updateDisplay();
+}
+
 // Update display function
 function updateDisplay() {
   document.getElementById("volumeDisplay").innerText = `Current Volume: ${volume}`;
@@ -87,3 +123,11 @@ document.getElementById("neverSore").addEventListener("click", () => updateSoren
 document.getElementById("healedWhileAgo").addEventListener("click", () => updateSoreness('healedAWhileAgo'));
 document.getElementById("healedOnTime").addEventListener("click", () => updateSoreness('healedOnTime'));
 document.getElementById("stillSore").addEventListener("click", () => updateSoreness('stillSore'));
+
+document.getElementById("noProgress").addEventListener("click", () => updateProgressedLastTime('no'));
+document.getElementById("barelyProgress").addEventListener("click", () => updateProgressedLastTime('barely'));
+document.getElementById("yesProgress").addEventListener("click", () => updateProgressedLastTime('yes'));
+
+document.getElementById("tiredEnergy").addEventListener("click", () => updateCurrentEnergy('tired'));
+document.getElementById("normalEnergy").addEventListener("click", () => updateCurrentEnergy('normal'));
+document.getElementById("energisedEnergy").addEventListener("click", () => updateCurrentEnergy('energised'));
