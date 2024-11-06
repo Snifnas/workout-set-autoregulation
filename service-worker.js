@@ -1,12 +1,12 @@
 const CACHE_NAME = 'muscle-volume-tracker-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json',
-  '/images/icon-192x192.png',
-  '/images/icon-512x512.png'
+  '/workout-set-autoregulation/',
+  '/workout-set-autoregulation/index.html',
+  '/workout-set-autoregulation/style.css',
+  '/workout-set-autoregulation/script.js',
+  '/workout-set-autoregulation/manifest.json',
+  '/workout-set-autoregulation/images/icon-192x192.png',
+  '/workout-set-autoregulation/images/icon-512x512.png'
 ];
 
 // Install event: cache all app shell files
