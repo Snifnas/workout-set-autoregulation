@@ -12,8 +12,11 @@ h1 {
   color: #007bff;
 }
 
-button {
+label, input, button {
   margin: 5px;
+}
+
+button {
   padding: 10px;
   border: none;
   border-radius: 5px;
