@@ -1,22 +1,82 @@
-function recommendSets() {
-  // Get the values from the input fields
-  const lastSets = parseInt(document.getElementById("lastSets").value);
-  const pump = parseInt(document.getElementById("pump").value);
-  const workload = parseInt(document.getElementById("workload").value);
-  const energy = parseInt(document.getElementById("energy").value);
-  
-  let recommendedSets = lastSets;
+// Initial volume
+let volume = 0;
 
-  // Increase Sets Aggressively
-  if ((pump <= 2 || workload <= 2) && energy >= 4) {
-    recommendedSets += 2; // Increase sets aggressively if pump/workload is low and energy is high
-  } else if (energy >= 4) {
-    recommendedSets += 1; // Increase sets moderately if energy is high
+// Muscle Pump Feedback
+function updatePump(pumpLevel) {
+  switch (pumpLevel) {
+    case 'low':
+      volume += 1;
+      break;
+    case 'moderate':
+      // No change in volume
+      break;
+    case 'amazing':
+      volume -= 1;
+      break;
+    default:
+      console.error("Invalid pump level");
   }
-
-  // Ensure recommended sets is at least 1
-  recommendedSets = Math.max(1, recommendedSets);
-
-  // Display the recommendation
-  document.getElementById("recommendation").textContent = `Recommended Sets: ${recommendedSets}`;
+  updateDisplay();
 }
+
+// Muscle Workload Feedback
+function updateWorkload(workloadLevel) {
+  switch (workloadLevel) {
+    case 'easy':
+      volume += 1;
+      break;
+    case 'prettyGood':
+      volume += 1;
+      break;
+    case 'pushedLimits':
+      // No change in volume
+      break;
+    case 'tooMuch':
+      volume -= 1;
+      break;
+    default:
+      console.error("Invalid workload level");
+  }
+  updateDisplay();
+}
+
+// Muscle Soreness Feedback
+function updateSoreness(sorenessLevel) {
+  switch (sorenessLevel) {
+    case 'neverGotSore':
+      volume += 1;
+      break;
+    case 'healedAWhileAgo':
+      volume += 1;
+      break;
+    case 'healedOnTime':
+      // No change in volume
+      break;
+    case 'stillSore':
+      volume -= 1;
+      break;
+    default:
+      console.error("Invalid soreness level");
+  }
+  updateDisplay();
+}
+
+// Update display function
+function updateDisplay() {
+  document.getElementById("volumeDisplay").innerText = `Current Volume: ${volume}`;
+}
+
+// Event listeners for each button
+document.getElementById("lowPump").addEventListener("click", () => updatePump('low'));
+document.getElementById("moderatePump").addEventListener("click", () => updatePump('moderate'));
+document.getElementById("amazingPump").addEventListener("click", () => updatePump('amazing'));
+
+document.getElementById("easyWorkload").addEventListener("click", () => updateWorkload('easy'));
+document.getElementById("prettyGoodWorkload").addEventListener("click", () => updateWorkload('prettyGood'));
+document.getElementById("pushedLimitsWorkload").addEventListener("click", () => updateWorkload('pushedLimits'));
+document.getElementById("tooMuchWorkload").addEventListener("click", () => updateWorkload('tooMuch'));
+
+document.getElementById("neverSore").addEventListener("click", () => updateSoreness('neverGotSore'));
+document.getElementById("healedWhileAgo").addEventListener("click", () => updateSoreness('healedAWhileAgo'));
+document.getElementById("healedOnTime").addEventListener("click", () => updateSoreness('healedOnTime'));
+document.getElementById("stillSore").addEventListener("click", () => updateSoreness('stillSore'));
