@@ -1,21 +1,39 @@
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open('workout-recommender').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles.css',
-        '/script.js',
-        '/manifest.json'
-      ]);
+const cacheName = 'muscle-volume-tracker-v1';
+const assetsToCache = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/manifest.json',
+  '/images/icon-192x192.png',
+  '/images/icon-512x512.png'
+];
+
+// Install event
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(cacheName).then(cache => {
+      return cache.addAll(assetsToCache);
     })
   );
 });
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => {
-      return response || fetch(e.request);
+// Fetch event
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+});
+
+// Activate event - update service worker and clear old cache
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.filter(name => name !== cacheName).map(name => caches.delete(name))
+      );
     })
   );
 });
