@@ -3,49 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Workout Volume Calculator</title>
   <link rel="manifest" href="manifest.json">
-  <base href="/workout-set-autoregulation/">
-  <title>Muscle Volume Tracker</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Muscle Volume Tracker</h1>
-
-  <!-- Input for Initial Volume -->
-  <label for="initialVolume">Enter Initial Volume:</label>
-  <input type="number" id="initialVolume" value="0">
-  <button onclick="setInitialVolume()">Set Volume</button>
-
-  <!-- Display Updated Volume -->
-  <div id="volumeDisplay">Current Volume: 0</div>
-
-  <h2>Muscle Pump</h2>
-  <button id="lowPump">Low Pump</button>
-  <button id="moderatePump">Moderate Pump</button>
-  <button id="amazingPump">Amazing Pump</button>
-
-  <h2>Muscle Workload</h2>
-  <button id="easyWorkload">Easy</button>
-  <button id="prettyGoodWorkload">Pretty Good</button>
-  <button id="pushedLimitsWorkload">Pushed My Limits</button>
-  <button id="tooMuchWorkload">Too Much</button>
-
-  <h2>Muscle Soreness</h2>
-  <button id="neverSore">Never Got Sore</button>
-  <button id="healedWhileAgo">Healed A While Ago</button>
-  <button id="healedOnTime">Healed Just On Time</button>
-  <button id="stillSore">I'm Still Sore!</button>
-
-  <h2>Progressed Last Time</h2>
-  <button id="noProgress">No</button>
-  <button id="barelyProgress">Barely</button>
-  <button id="yesProgress">Yes</button>
-
-  <h2>Current Energy</h2>
-  <button id="tiredEnergy">Tired</button>
-  <button id="normalEnergy">Normal</button>
-  <button id="energisedEnergy">Energised</button>
-
+  <header>
+    <h1>Workout Volume Calculator</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Calculate MEV</h2>
+      <form id="mevForm">
+        <label>
+          Pump:
+          <select id="pumpScore" required>
+            <option value="0">No pump (0)</option>
+            <option value="1">Ok pump (1)</option>
+            <option value="2">Great pump (2)</option>
+          </select>
+        </label>
+        <label>
+          Target Muscle Challenge:
+          <select id="challengeScore" required>
+            <option value="0">Barely worked (0)</option>
+            <option value="1">Plenty of tension (1)</option>
+            <option value="2">Stressed to limits (2)</option>
+          </select>
+        </label>
+        <label>
+          Soreness:
+          <select id="sorenessScore" required>
+            <option value="0">No soreness (0)</option>
+            <option value="1">Stiff for hours (1)</option>
+            <option value="2">Sore for days (2)</option>
+          </select>
+        </label>
+        <button type="submit">Calculate</button>
+      </form>
+      <div id="mevResult"></div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Workout Volume Calculator</p>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
