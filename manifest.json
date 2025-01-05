@@ -1,21 +1,21 @@
 {
-  "name": "Muscle Volume Tracker",
-  "short_name": "Volume Tracker",
-  "description": "A PWA to track and calculate muscle volume based on workout feedback.",
-  "start_url": "/workout-set-autoregulation/index.html",
-  "display": "standalone",
-  "background_color": "#f8f9fa",
-  "theme_color": "#007bff",
+  "name": "Workout Volume Calculator",
+  "short_name": "VolumeCalc",
+  "description": "A simple calculator to evaluate and adjust your workout volume.",
   "icons": [
     {
-      "src": "/workout-set-autoregulation/images/icon-192x192.png",
+      "src": "icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/workout-set-autoregulation/images/icon-512x512.png",
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
 }
